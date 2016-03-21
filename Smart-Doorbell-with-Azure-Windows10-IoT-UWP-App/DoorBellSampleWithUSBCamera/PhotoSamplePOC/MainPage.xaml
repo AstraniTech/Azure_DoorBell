@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="PhotoSamplePOC.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PhotoSamplePOC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>       
+        <StackPanel>
+            <TextBlock Name="ImageTitle" Grid.Row="0" Grid.Column="1" Text="Last captured photo" Height="30" HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="Visible"/>
+            <Canvas Name="PhotoCanvas" Grid.Row="1" Grid.Column="1" Width="200" Height="200" Background="Gray"  Margin="20,0,0,0" Visibility="Visible">
+                <Image x:Name="captureImage" Width="200" Height="200" Visibility="Visible"/>
+            </Canvas>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Name="PreviewTitle" Grid.Row="0" Grid.Column="0" Text="Preview"  Height="30" HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="Visible"/>
+            <Canvas Name="PreviewCanvas" Grid.Row="1" Grid.Column="0" Width="200" Height="200" Background="Gray"  Margin="0,0,0,0" Visibility="Visible">
+                <CaptureElement x:Name="previewElement" Width="200" Height="200" HorizontalAlignment="Left" Visibility="Visible"/>
+            </Canvas>
+        </StackPanel>
+    </Grid>
+</Page>
