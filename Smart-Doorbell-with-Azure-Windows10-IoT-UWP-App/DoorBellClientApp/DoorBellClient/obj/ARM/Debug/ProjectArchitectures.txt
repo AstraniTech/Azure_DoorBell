@@ -1,0 +1,1 @@
+D:\Git Repositories\Smart-Doorbell-with-Azure-Windows10-IoT-UWP-App\DoorBellClientApp\DoorBellClient\DoorBellClient.csproj;arm

@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="DoorBellClient.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DoorBellClient"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource x:ConnectionId='1'
+            x:Name="itemsViewSource"
+            Source="{Binding Items}"/>
+        <DataTemplate x:Key="Standard130ItemTemplatedeal">
+        <Grid Height="310" Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="310"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Background="#1e364f" Width="310" Height="310" Grid.Row="0">
+                <Image Source="{Binding Url}" Stretch="Fill"/>
+            </Border>
+            
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0" Grid.RowSpan="2">
+               <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="DoorBell Id:" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="White"  TextWrapping="NoWrap"></TextBlock>
+                    <TextBlock Text="{Binding DoorBellID}" Style="{StaticResource SubheaderTextBlockStyle}" 
+                               Foreground="White" TextWrapping="NoWrap" Margin="5,0,0,0"/>
+                </StackPanel>
+                <TextBlock Text="Date/Time:" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White"  TextWrapping="NoWrap"></TextBlock>
+                 <TextBlock Text="{Binding UpdatedAt}" Style="{StaticResource SubtitleTextBlockStyle}" 
+                            Foreground="White"  TextWrapping="NoWrap"></TextBlock>
+                       
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+   
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:ConnectionId='2' Content="Refresh"                      VerticalAlignment="Top"
+                HorizontalAlignment="Right" Margin="5"/>
+        <ProgressBar x:ConnectionId='3' x:Name="progressBar" IsIndeterminate="True" VerticalAlignment="Top"
+                     Foreground="Cyan" Background="Transparent"
+                     Visibility="Collapsed"/>
+        <ListView x:ConnectionId='4'
+            x:Name="itemListView"
+            AutomationProperties.AutomationId="ItemsListView"
+            AutomationProperties.Name="Items"
+            TabIndex="1"
+            Grid.Row="1"
+            Margin="10,40,0,0" SelectionMode="None"
+            Padding="0,0,0,60"
+            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+            IsSwipeEnabled="False"            
+            ItemTemplate="{StaticResource Standard130ItemTemplatedeal}"/>
+    </Grid>
+</Page>
+
